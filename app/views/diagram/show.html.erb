@@ -2,7 +2,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/graphdracula/1.2.1/dracula.dev.js"></script>
 
 <div id="activity-diagram-canvas" style="height: 400px; width: 100%;"></div>
-<button type="button" onclick="ActivityDiagram.redraw()"><%= t 'btn_redraw' %></button>
 
 <script>
 
@@ -14,7 +13,7 @@
 
       <% @issues.each do |issue| %>
         graph.addNode('<%= issue.id %>', {
-          label: '<%= issue.subject %>'
+          label: '<%= issue.subject[0, [15, issue.subject.length].min].strip + (issue.subject.length <= 15 ? '' : '…') %>'
         });
       <% end %>
 
