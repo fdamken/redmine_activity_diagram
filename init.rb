@@ -2,7 +2,7 @@ Redmine::Plugin.register :redmine_activity_diagram do
   name 'Redmine Activity Diagram Plugin'
   author 'Fabian Damken'
   description 'This plugin visualizes the issue dependencies using an activity diagram.'
-  version '1.0.0'
+  version '1.0.1'
   url 'https://github.com/fdamken/redmine_activity_diagram'
   author_url 'https://github.com/fdamken'
 
