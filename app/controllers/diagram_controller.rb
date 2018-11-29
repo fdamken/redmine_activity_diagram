@@ -2,7 +2,15 @@ class DiagramController < ApplicationController
   def show
     project_key = params[:project_id]
     @project = Project.find(project_key)
-    @issues = Issue.where( { :project_id => @project.id } ).visible(User.current).open()
+    @issues = Issue.where( { :project_id => @project.id } )
+        .visible(User.current)
+        .open()
+        .select { |issue|
+          issue.relations.select { |relation|
+            relation.relation_type === 'blocks'
+          }
+          .count > 0
+        }
     @relations = []
     @issues.each do |issue|
       issue.relations.each do |relation|
